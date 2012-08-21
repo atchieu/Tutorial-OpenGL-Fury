@@ -58,6 +58,18 @@ EX5_OBJS = \
 EX6_OBJS = \
 	example6.o
 
+EX7_OBJS = \
+	example7.o
+
+EX8_OBJS = \
+	example8.o
+	
+EX9_OBJS = \
+	example9.o
+	
+EX10_OBJS = \
+	example10.o
+
 # RULES
 
 .DEFAULT_GOAL := ex1
@@ -97,15 +109,39 @@ ex6: $(EX6_OBJS)
 	@echo 
 	@echo DONE
 	@echo
+	
+ex7: $(EX7_OBJS)
+	$(CC) $(LIBS) $^ -o $@
+	@echo 
+	@echo DONE
+	@echo
+	
+ex8: $(EX8_OBJS)
+	$(CC) $(LIBS) $^ -o $@
+	@echo 
+	@echo DONE
+	@echo
+	
+ex9: $(EX9_OBJS)
+	$(CC) $(LIBS) $^ -o $@
+	@echo 
+	@echo DONE
+	@echo
+	
+ex10: $(EX10_OBJS)
+	$(CC) $(LIBS) $^ -o $@
+	@echo 
+	@echo DONE
+	@echo
 
-all: ex1 ex2 ex3 ex4 ex5 ex6
+all: ex1 ex2 ex3 ex4 ex5 ex6 ex7 ex8 ex9 ex10
 
 %.o: %.cpp
 	$(CC) $(CPPFLAGS) $(CPPFLAGSOPT) -c $^ -o $@
 
 clean:
 	rm -f *.o
-	rm -f ex1 ex2 ex3 ex4 ex5 ex6
+	rm -f ex1 ex2 ex3 ex4 ex5 ex6 ex7 ex8 ex9 ex10
 
 
 
