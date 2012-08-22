@@ -21,7 +21,7 @@ void onInitialization()
 
 void onDisplay()
 {
-	const float size = 0.25;
+	const float size = 0.5;
 
 	glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -29,18 +29,34 @@ void onDisplay()
 	//rotating on every frame (for testing purposes only)
 	glRotated(5, 1, 0, 0);
 	glPushMatrix();
-	glutSolidCone(0.25*size, size, 20, 20);
+	glutSolidCone(0.25 * size, size, 20, 20);
 	glPopMatrix();
 
-	glPushMatrix();
-	glTranslated(0.25, 0.25, 0);
-	glutSolidSphere(0.5*size, 50, 50);
-	glPopMatrix();
+	const float radius = size;
 
-	glPushMatrix();
-	glTranslated(-0.25, 0.25, 0);
-	glutSolidTeapot(0.5*size);
-	glPopMatrix();
+	GLfloat halfLength = 1.0 * radius;
+	GLfloat vertex1[2] = {  0.5 * radius, -halfLength };
+	GLfloat vertex2[2] = { - 0.5 * radius, -halfLength };
+	GLfloat vertex3[2] = { 0.0, halfLength };
+
+	glColor3f(0, 0, 0);
+	glLineWidth(5.0);
+//	glBegin(GL_LINE_LOOP);
+	glBegin(GL_LINE_SMOOTH);
+	glVertex2f(vertex1[0], vertex1[1]);
+	glVertex2f(vertex2[0], vertex2[1]);
+	glVertex2f(vertex3[0], vertex3[1]);
+	glEnd();
+
+//	glPushMatrix();
+//	glTranslated(0.25, 0.25, 0);
+//	glutSolidSphere(0.5 * size, 50, 50);
+//	glPopMatrix();
+//
+//	glPushMatrix();
+//	glTranslated(-0.25, 0.25, 0);
+//	glutSolidTeapot(0.5 * size);
+//	glPopMatrix();
 
 	glFinish();
 	glutSwapBuffers();

@@ -47,7 +47,7 @@ void initRendering()
 	glEnable(GL_LIGHT0); //Enable light #0
 	glEnable(GL_LIGHT1); //Enable light #1
 	glEnable(GL_NORMALIZE); //Automatically normalize normals
-	//glShadeModel(GL_SMOOTH); //Enable smooth shading
+	glShadeModel(GL_SMOOTH); //Enable smooth shading
 }
 
 //Called when the window is resized
@@ -173,24 +173,22 @@ void update(int value)
 
 int main(int argc, char** argv)
 {
-	//Initialize GLUT
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(400, 400);
+	glutCreateWindow("Lighting");
 
-	//Create the window
-	glutCreateWindow("Lighting - videotutorialsrock.com");
 	initRendering();
 
-	//Set handler functions
 	glutDisplayFunc(drawScene);
 	glutSpecialFunc(specialKeyboard);
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
 
-	glutTimerFunc(25, update, 0); //Add a timer
+	glutTimerFunc(25, update, 0);
 
 	glutMainLoop();
+
 	return 0;
 }
 
